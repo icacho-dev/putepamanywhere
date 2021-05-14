@@ -12,7 +12,17 @@ import {
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'images';
 const UPLOAD_PATH = 'uploads';
-const upload = multer({ dest: `${UPLOAD_PATH}/`, fileFilter: imageFilter }); // multer configuration
+const maxSize:number = 9437184; // 9MB
+const upload = multer({
+  dest: `${UPLOAD_PATH}/`,
+  fileFilter: imageFilter,
+  limits: {
+    fieldNameSize: 255,
+    fileSize: maxSize,
+    files: 1,
+    fields: 1,
+  },
+}); // multer configuration
 const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 
 // app
