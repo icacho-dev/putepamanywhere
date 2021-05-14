@@ -19,7 +19,7 @@ const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 const app = express();
 app.use(cors());
 
-app.post('/subject', upload.single('avatar'), async (req, res) => {
+app.post('/pictures', upload.single('avatar'), async (req, res) => {
     try {
         const col = await loadCollection(COLLECTION_NAME, db);
         const data = col.insert(req.file);
@@ -31,7 +31,7 @@ app.post('/subject', upload.single('avatar'), async (req, res) => {
     }
 })
 
-app.get('/images', async (req, res) => {
+app.get('/pictures', async (req, res) => {
     try {
         const col = await loadCollection(COLLECTION_NAME, db);
         res.send(col.data);
@@ -40,7 +40,7 @@ app.get('/images', async (req, res) => {
     }
 })
 
-app.get('/images/:id', async (req, res) => {
+app.get('/pictures/:id', async (req, res) => {
     try {
         const col = await loadCollection(COLLECTION_NAME, db);
         const result = col.get(Number(req.params.id));
