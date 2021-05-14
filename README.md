@@ -24,7 +24,21 @@ Backend  requirements
       - POST /pictures    < where the user image will be uploaded 
       - GET  /pictures    > list all images
       - GET  /pictures:id > fetch single image
+    - create a router
    
 Frontend requirements:
 
 1. User should be able to upload a picture
+
+---
+
+src
+│   app.js          # App entry point
+└───api             # Express route controllers for all the endpoints of the app
+└───config          # Environment variables and configuration related stuff
+└───jobs            # Jobs definitions for agenda.js
+└───loaders         # Split the startup process into modules
+└───models          # Database models
+└───services        # All the business logic is here
+└───subscribers     # Event handlers for async task
+└───types           # Type declaration files (d.ts) for Typescript
