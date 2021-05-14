@@ -10,4 +10,12 @@ const loadCollection = function (colName, db: Loki): Promise<Loki.Collection<any
     });
 }
 
-export { loadCollection }
+const imageFilter = function (req, file, cb) {
+    // accept image only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+
+export { imageFilter, loadCollection }
