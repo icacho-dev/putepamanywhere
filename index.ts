@@ -19,7 +19,7 @@ const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 const app = express();
 app.use(cors());
 
-app.post('/profile', upload.single('avatar'), async (req, res) => {
+app.post('/subject', upload.single('avatar'), async (req, res) => {
     try {
         const col = await loadCollection(COLLECTION_NAME, db);
         const data = col.insert(req.file);
